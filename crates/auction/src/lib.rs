@@ -3,9 +3,7 @@
 #![warn(clippy::all, clippy::nursery)]
 use uuid::Uuid;
 
-mod single_price;
-
-use single_price::single_price;
+mod strategies;
 
 /// The Bid type.
 #[derive(Debug, Clone, Copy)]
@@ -84,6 +82,7 @@ pub type Sales = Vec<Sale>;
 #[derive(Debug, Clone)]
 pub enum AuctionStrategy {
     SinglePrice,
+    MultiPrice,
 }
 
 /// The auction type.
@@ -98,7 +97,8 @@ impl Auction {
     /// Resolve the bids against the given auction
     pub fn resolve_bids(&self, mut bids: Bids) -> Sales {
         match self.strategy {
-            AuctionStrategy::SinglePrice => single_price(self, bids),
+            AuctionStrategy::SinglePrice => strategies::single_price(self, bids),
+            AuctionStrategy::MultiPrice => strategies::multi_price(self, bids),
         }
     }
 }

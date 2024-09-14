@@ -62,6 +62,7 @@ mod test {
         let sales = auction.resolve_bids(bids);
         assert_eq!(sales.len(), bids_len);
         assert_eq!(sales[0].amount, 10);
+        assert_eq!(sales[1].amount, 10);
     }
 
     #[test]

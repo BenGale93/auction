@@ -11,3 +11,4 @@ The `auction` crate contains the core logic and types.
 ## Auction Types
 
 - [x] Single Price Auction (used to sell US Treasury bonds).
+- [x] Multi Price Auction
